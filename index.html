@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <style>
+        *{
+ margin: 0;
+ padding: 0;
+ font-family: 'Poppins', sans-serif;
+ /* box-sizing: border-box; */
+}
+body{
+    background: #000000;
+    color: #ffffff;
+    margin: 20px;
+}
+#header{
+    width: 100%;
+    height: 100vh;
+    background-image: url(img/20230316_215502.jpg);
+    background-size: cover;
+   background-position: center;
+}
+.container{
+    padding: 10px 10%;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+logo{
+    width: 140px;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+nav ul li a::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background:#25d366;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+nav ul li a:hover::after{
+    width: 100%;
+}
+.header-text{
+    margin-top: 20%;
+    font-size: 30px;
+}
+.header-text h1{
+font-size: 60px;
+margin: 20px;
+}
+.header-text h1 span {
+    color: #00f662;
+}
+/* <!-- ------------------------ about --------------------------- --> */
+#about{
+    padding: 80px 0;
+    color: #ababab;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.about-col-1{
+    flex-basis: 35%;
+}
+.about-col-1 img{
+    width: 100%;
+    border-radius: 15px;
+}
+.about-col-2{
+    flex-basis: 60%;
+
+}
+.sub-title{
+    font-size: 60px;
+    font-weight: 600;
+    color: white;
+}
+.tab-titles{
+    display: flex;
+    margin: 20px 0 40px;
+}
+.tab-links{
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+.tab-links::after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: #f50000;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+    
+}
+.tab-links.active-link::after{
+    width: 50%;
+}
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+}
+.tab-contents ul li span{
+    color: #00f662;
+    font-size: 14px;
+}
+.tab-contents{
+    display: none;
+}
+.tab-contents.active-tab{
+    display: block;
+}
+/* - --------------------------- SERVICES --------------------------------- */
+#services{
+    padding: 30px 0;
+}
+.services-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+    box-shadow: #000000;
+}
+.services-list div {
+    background: #262626;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
+}
+.services-list div i{
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+.services-list div h2{
+    font-size: 50px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.services-list div a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.services-list div:hover{
+    background: #11493e;
+    transform: translateY(-10px);
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+.modal-content div:hover{
+    background-color: bisque;
+    background: #fefefe;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* =================================  contact  */
+
+#contact-me {
+  padding: 80px 0;
+  background-color: #262626;
+  border-radius: 20px;
+  padding: 60px;
+  text-align: center;
+}
+
+#contact-me .sub-title {
+  font-size: 48px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+#contact-me p {
+  color: #ffffff;  
+  font-size: 18px;
+  line-height: 28px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+#contact-me button {
+  display: block;
+  margin: 0 auto;
+  padding: 20px 40px;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+#contact-me:hover {
+    background: #11493e;
+    transform: translateY(-10px);
+    transition: background-color 0.3s ease-in-out;
+}
+
+#contactBtn {
+  background-color: #25d366;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+#contactBtn:hover {
+  background-color: #128c7e;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+  margin-top: 50px;
+  height: 600px;
+}
+
+.contact-option {
+  text-align: center;
+}
+
+.contact-option button {
+  background-color: #00e676;
+  color: #fff;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.contact-option button:hover {
+  cursor: pointer;
+  background-color: #1de9b6;
+}
+
+.contact-option p {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+}
+#contact-me button {
+  display: block;
+  margin: 30%;
+}
+
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 16px;
+}
+
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#contact-form textarea {
+  height: 150px;
+}
+
+#contact-form button[type="submit"] {
+  background-color: #00e676;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+#contact-form button[type="submit"]:hover {
+  cursor: pointer;
+  background-color: #1de9b6;
+}
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 0px;
+  font-size: 14px;
+  border-top: 1px solid #ccc;
+}
+footer p{
+    text-align: center;
+}
+footer textarea {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+
+    </style>
+    <!-- <link rel="stylesheet" href="profile.css"> -->
+    <script src="https://kit.fontawesome.com/96510cc791.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="" class= "logo">
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">My Knowledge</a></li>
+                    <!-- <li><a href="#">Portfolio</a></li> -->
+                    <li><a href="#contact-me">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p>FULL STACK DEVELOPER</p>
+                <h1>Hi I'm <span>Vankadara</span> <br>Hari Krishna From India</h1>
+            </div>
+        </div>
+   </div> 
+   <!-- ------------------------ about --------------------------- -->
+   <div id="about">
+        <div class="container">
+              <div class="row">
+                    <div class="about-col-1">
+                        <img src="img/20230316_224733.jpg" alt="">
+                    </div>
+                    <div class="about-col-2">
+                       <h1 class="sub-title"> About Me</h1>
+                       <p>COMING SOON...</p>
+                       <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, laudantium quibusdam. Earum obcaecati saepe hic molestias iusto. Placeat autem voluptates, velit ea voluptas accusamus quod ab vel reiciendis odio tempore.</p> -->
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p> 
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p> 
+                    </div>
+                         <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>CORE JAVA</span><br>
+                                    • Have high knowledge in OOPS concept like Method Overloading and Method Overriding <br>
+                                    • Good knowledge on Polymorphism, Encapsulation and in Inheritance <br>
+                                    • Good knowledge on Typecasting , Constructor chaining <br>
+                                    • Good knowledge on Interface ,Types of Interfaces <br> </li>
+                                <li><span>SQL</span><br>
+                                    • Good knowledge in writing SQL queries. <br>
+                                    • Good knowledge in DDL, DQL, DML, TCL <br>
+                                    • Good knowledge in Grouping and Functions <br>
+                                    • Having very good knowledge in Sub-queries and Co-Related Sub-queries.<br></li>
+                                <li><span>Web Technoliges</span><br>
+                                    • Html
+                                    • css
+                                    • Java Script 
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="experience">
+                            <ul>
+                                <li><span>Fresher</span><br> I had the opportunity to study full-stack development at JSpiders, where I learned an extensive curriculum covering a range of programming languages and tools. <br> Specifically, we covered HTML, CSS, JavaScript and hibernet as well as other frameworks and technologies.
+                                    <br> One of the things I appreciated most about my experience at JSPiders was the emphasis on hands-on learning. <br> We had numerous coding exercises, code reviews. which helped me gain a deeper understanding of the material.</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>2022</span><br>GATES Institute of Technology Gooty<span> <br>(62.70%)</span></li>
+                                <li><span>2019</span><br>Sir CV Raman Institute of Technology & sciences Tadipatri <span><br> (65.44%)</span></li>
+                                <li><span>2014</span><br>Saint Thomas IIT school Tadipatri <span><br>(7.0)</span></li>
+                            </ul>
+                        </div>  
+                    </div>
+             </div>
+    </div>
+   </div>
+   <!-- --------------------------- SERVICES --------------------------------- -->
+   <div id="services">
+    <div class="conta"></div>
+    <h1 class="sub-title">Knowledge in</h1>
+    <div class="services-list">
+      <div>
+        <i class="fa-solid fa-code"></i>
+        <h2>Front-End <br> Web Design</h2>
+        <p>My front-end work</p> <br>
+        <button id="FEWDlearnMoreBtn">Click here to know more</button>
+      </div>
+      <div id="FEWDmodal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Front-End Web Design</h2>
+          <strong>COMING SOON...</strong>
+        </div>
+      </div>
+      <!-- -------------  -->
+      <div>
+        <i class="fa-brands fa-java"></i>
+        <h2>Java programming</h2>
+        <p>To know more about JAVA PROGRAM's,jdbc,servlet and jsp</p> <br>
+        <button id="JPlearnMoreBtn">Click here to know more</button>
+      </div>
+      <div id="JPmodal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Java Programming</h2>
+          <strong>COMING SOON...</strong>
+        </div>
+      </div>
+      <!-- ------------- -->
+      <div>
+        <i class="fa-sharp fa-solid fa-database"></i>
+        <h2>Database Management</h2>
+        <p>When it comes to database i know Oracle SQL to communicate with the database</p> <br>
+        <button id="DMlearnMoreBtn">Click here to know more</button>
+      </div>
+      <div id="DMmodal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>ORACLE SQL</h2>
+          <strong>COMING SOON...</strong>
+    </div>
+  </div>
+</div> <br>
+
+<!-- ==================== contact me ================= -->
+<h1 class="sub-title">Contact Me</h1> <br>
+<div id="contact-me">
+    <p>Please feel free to contact me via WhatsApp or by filling out the form below.</p>
+    <div class="contact-grid">
+      <div class="contact-option">
+        <button id="contactBtn">Contact Me on WhatsApp <i class="fab fa-whatsapp"></i></button>
+      </div>
+      <div class="contact-option">
+        <strong> <pre>      FORM CONSTRUCTION IS IN UNDER PROGRESS,
+          KINDLY CONTACT ME THROUGH WHATSAPP, THANK YOU</pre></strong>
+        <form id="contact-form" method="post">
+          <input type="text" placeholder="Your Name" name="name" required>
+          <input type="email" placeholder="Your Email" name="email" required>
+          <textarea placeholder="Your Message" name="message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>Follow Us</h4>
+          <p><button><a href="www.fb.com/hari1999krishna"><i class="fa-brands fa-facebook"></i></a> <button><a href="twitter.com/hari1999krishna"><i class="fab fa-twitter"></i></a></button> <button><a href="www.instagram.com/hari1999krishna"><i class="fab fa-instagram"></i></a></button><button<a href="#"><i class="fab fa-linkedin"></i></a></button></p>
+        </div>
+      </div>
+      <hr>
+      <div class="text-center">
+        <p>&copy; 2023 Hari Krishna. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+   
+<!-- ------------------------------------------ SCRIPT ------------------------------------------------- -->
+
+   <script>
+
+const navLinks = document.querySelectorAll('nav ul li a');
+navLinks.forEach(link => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    const targetSection = document.querySelector(event.target.hash);
+    targetSection.scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+
+
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname){
+                for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+            }
+                for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+
+
+        // Get the modals and buttons
+var FEWDmodal = document.getElementById("FEWDmodal");
+var JPmodal = document.getElementById("JPmodal");
+var DMmodal = document.getElementById("DMmodal");
+var FEWDbtn = document.getElementById("FEWDlearnMoreBtn");
+var JPbtn = document.getElementById("JPlearnMoreBtn");
+var DMbtn = document.getElementById("DMlearnMoreBtn");
+
+// Set up function to toggle modal display
+function toggleModal(modal) {
+  modal.style.display = modal.style.display === "block" ? "none" : "block";
+}
+
+// Add click event listeners to buttons and spans
+FEWDbtn.onclick = function() { toggleModal(FEWDmodal); };
+JPbtn.onclick = function() { toggleModal(JPmodal); };
+DMbtn.onclick = function() { toggleModal(DMmodal); };
+FEWDmodal.querySelector(".close").onclick = function() { toggleModal(FEWDmodal); };
+JPmodal.querySelector(".close").onclick = function() { toggleModal(JPmodal); };
+DMmodal.querySelector(".close").onclick = function() { toggleModal(DMmodal); };
+
+
+
+// =============== contact me ==============
+
+    // get the contact button
+const contactBtn = document.getElementById('contactBtn');
+
+// add a click event listener to the button
+contactBtn.addEventListener('click', openWhatsApp);
+
+// function to open WhatsApp
+function openWhatsApp() {
+  // set your WhatsApp number here
+  let phoneNumber = '+918978294198';
+
+  // create the WhatsApp URL
+  let whatsappUrl = `https://wa.me/8978294198`;
+
+  // open the WhatsApp URL in a new tab
+  window.open(whatsappUrl);
+}
+
+   </script>
+</body>
+</html>
